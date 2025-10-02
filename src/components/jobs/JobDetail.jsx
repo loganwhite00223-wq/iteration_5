@@ -76,7 +76,7 @@ export default function JobDetail() {
   if (loading) {
     return (
       <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
-        🔄 Loading job details...
+        Loading job details...
       </div>
     )
   }
@@ -84,7 +84,7 @@ export default function JobDetail() {
   if (error || !job) {
     return (
       <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
-        <p style={{ color: '#dc3545' }}>❌ {error || 'Job not found'}</p>
+        <p style={{ color: '#dc3545' }}>{error || 'Job not found'}</p>
         <button 
           onClick={() => navigate('/jobs')}
           style={{
@@ -97,7 +97,7 @@ export default function JobDetail() {
             marginTop: '1rem'
           }}
         >
-          ← Back to Jobs
+          Back to Jobs
         </button>
       </div>
     )
@@ -121,7 +121,7 @@ export default function JobDetail() {
                 color: '#666'
               }}
             >
-              ← Back to Jobs
+              Back to Jobs
             </button>
             <h1 style={{ margin: '0 0 0.5rem 0', fontSize: '1.8rem' }}>
               {job.title}
@@ -138,8 +138,8 @@ export default function JobDetail() {
                 {job.status.toUpperCase()}
               </span>
               <span style={{ color: '#666' }}>{job.department}</span>
-              <span style={{ color: '#666' }}>📍 {job.location}</span>
-              <span style={{ color: '#666' }}>💼 {job.workType}</span>
+              <span style={{ color: '#666' }}>Location: {job.location}</span>
+              <span style={{ color: '#666' }}>Work type: {job.workType}</span>
             </div>
           </div>
           
@@ -155,7 +155,7 @@ export default function JobDetail() {
               fontSize: '1rem'
             }}
           >
-            {job.status === 'active' ? '📦 Archive Job' : '🚀 Activate Job'}
+            {job.status === 'active' ? 'Archive Job' : 'Activate Job'}
           </button>
         </div>
 
@@ -169,7 +169,7 @@ export default function JobDetail() {
             marginBottom: '1rem'
           }}>
             <div style={{ fontSize: '1rem', color: '#856404', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-              🕒 Auto-Archive Timer
+              Auto-Archive Timer
             </div>
             <LiveTimer 
               targetDate={job.autoArchiveDate}
@@ -199,7 +199,7 @@ export default function JobDetail() {
       {/* Salary & Experience */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
         <div className="card">
-          <h3 style={{ margin: '0 0 1rem 0', color: '#28a745' }}>💰 Compensation</h3>
+          <h3 style={{ margin: '0 0 1rem 0', color: '#28a745' }}>Compensation</h3>
           <div style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
             {formatSalary(job.salaryMin, job.salaryMax, job.salaryType)}
           </div>
@@ -209,7 +209,7 @@ export default function JobDetail() {
         </div>
 
         <div className="card">
-          <h3 style={{ margin: '0 0 1rem 0', color: '#007bff' }}>🎯 Experience</h3>
+          <h3 style={{ margin: '0 0 1rem 0', color: '#007bff' }}>Experience</h3>
           <div style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
             {job.experienceLevel}
           </div>
@@ -221,7 +221,7 @@ export default function JobDetail() {
 
       {/* Job Description */}
       <div className="card" style={{ marginBottom: '1rem' }}>
-        <h3 style={{ margin: '0 0 1rem 0' }}>📋 Job Description</h3>
+        <h3 style={{ margin: '0 0 1rem 0' }}>Job Description</h3>
         <p style={{ lineHeight: '1.6', color: '#333', margin: 0 }}>
           {job.description}
         </p>
@@ -230,7 +230,7 @@ export default function JobDetail() {
       {/* Responsibilities */}
       {job.responsibilities && job.responsibilities.length > 0 && (
         <div className="card" style={{ marginBottom: '1rem' }}>
-          <h3 style={{ margin: '0 0 1rem 0' }}>🎯 Key Responsibilities</h3>
+          <h3 style={{ margin: '0 0 1rem 0' }}>Key Responsibilities</h3>
           <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.6' }}>
             {job.responsibilities.map((responsibility, idx) => (
               <li key={idx} style={{ marginBottom: '0.5rem' }}>
@@ -244,7 +244,7 @@ export default function JobDetail() {
       {/* Requirements */}
       {job.requirements && job.requirements.length > 0 && (
         <div className="card" style={{ marginBottom: '1rem' }}>
-          <h3 style={{ margin: '0 0 1rem 0' }}>✅ Requirements</h3>
+          <h3 style={{ margin: '0 0 1rem 0' }}>Requirements</h3>
           <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.6' }}>
             {job.requirements.map((requirement, idx) => (
               <li key={idx} style={{ marginBottom: '0.5rem' }}>
@@ -258,7 +258,7 @@ export default function JobDetail() {
       {/* Benefits */}
       {job.benefits && job.benefits.length > 0 && (
         <div className="card" style={{ marginBottom: '1rem' }}>
-          <h3 style={{ margin: '0 0 1rem 0' }}>🎁 Benefits & Perks</h3>
+          <h3 style={{ margin: '0 0 1rem 0' }}>Benefits & Perks</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {job.benefits.map((benefit, idx) => (
               <span key={idx} style={{
@@ -269,7 +269,7 @@ export default function JobDetail() {
                 fontSize: '0.9rem',
                 border: '1px solid #c3e6cb'
               }}>
-                ✓ {benefit}
+                {benefit}
               </span>
             ))}
           </div>
@@ -278,7 +278,7 @@ export default function JobDetail() {
 
       {/* Job Meta Info */}
       <div className="card">
-        <h3 style={{ margin: '0 0 1rem 0' }}>📊 Job Information</h3>
+        <h3 style={{ margin: '0 0 1rem 0' }}>Job Information</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
           <div>
             <strong>Created:</strong> {new Date(job.createdAt).toLocaleDateString()}
