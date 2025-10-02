@@ -330,7 +330,8 @@ export default function JobsBoard() {
   }
 
   const renderJobCard = (job, index, isDragging = false, dragHandleProps) => (
-    <div 
+    <div
+      className={`job-card ${isDragging ? 'dragging' : ''} ${job.status === 'active' ? 'status-active' : 'status-archived'}`}
       style={{ 
         border: '1px solid #eee', 
         borderRadius: '8px', 
@@ -347,7 +348,7 @@ export default function JobsBoard() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <h3 style={{ margin: 0, fontSize: '1.1rem', flex: 1 }}>
+            <h3 className="job-title" style={{ margin: 0, fontSize: '1.1rem', flex: 1 }}>
               <Link 
                 to={`/jobs/${job.id}`} 
                 style={{ 
@@ -361,6 +362,7 @@ export default function JobsBoard() {
             </h3>
             <div style={{ display: 'flex', gap: '0.25rem' }}>
               <button
+                className="job-action-btn"
                 onClick={(e) => {
                   e.stopPropagation()
                   handleEditJob(job)
@@ -379,6 +381,7 @@ export default function JobsBoard() {
                 Edit
               </button>
               <button
+                className={`job-action-btn ${job.status === 'active' ? 'archive' : 'activate'}`}
                 onClick={(e) => {
                   e.stopPropagation()
                   handleStatusToggle(job)
@@ -413,12 +416,14 @@ export default function JobsBoard() {
             </p>
           )}
           
-          <div style={{ color: '#666', fontSize: '0.8rem', marginBottom: '0.5rem' }}>
-            {job.department} • {job.location} • {job.experienceLevel}
+          <div className="job-meta-chips">
+            <span className="job-chip">{job.department}</span>
+            <span className="job-chip">{job.location}</span>
+            <span className="job-chip">{job.experienceLevel}</span>
           </div>
 
           {job.salaryMin && job.salaryMax && (
-            <div style={{ color: '#28a745', fontSize: '0.9rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+            <div className="job-salary">
               ${job.salaryMin.toLocaleString()}-${job.salaryMax.toLocaleString()}
               {job.salaryType === 'hourly' ? '/hr' : '/yr'}
             </div>
@@ -426,14 +431,8 @@ export default function JobsBoard() {
 
           {/* Auto-Archive Timer */}
           {job.autoArchiveDate && job.status === 'active' && (
-            <div style={{ 
-              background: '#fff3cd', 
-              border: '1px solid #ffeaa7',
-              borderRadius: '4px', 
-              padding: '0.5rem',
-              marginBottom: '0.5rem'
-            }}>
-              <div style={{ fontSize: '0.7rem', color: '#856404', marginBottom: '0.25rem' }}>
+            <div className="job-timer">
+              <div className="job-timer-label">
                 Auto-archive in:
               </div>
               <LiveTimer 
@@ -445,15 +444,9 @@ export default function JobsBoard() {
           )}
           
           {job.tags && job.tags.length > 0 && (
-            <div style={{ marginTop: '0.5rem' }}>
+            <div className="job-tags">
               {job.tags.slice(0, 3).map((tag, idx) => (
-                <span key={idx} style={{
-                  background: '#e9ecef',
-                  padding: '2px 6px',
-                  borderRadius: '4px',
-                  fontSize: '0.7rem',
-                  marginRight: '0.25rem'
-                }}>
+                <span key={idx} className="job-tag">
                   {tag}
                 </span>
               ))}
@@ -466,12 +459,7 @@ export default function JobsBoard() {
           )}
         </div>
         
-        <div style={{ 
-          fontSize: '0.7rem', 
-          color: '#999',
-          textAlign: 'right',
-          minWidth: '80px'
-        }}>
+        <div className="job-right-meta">
           <div>
             {job.createdAt && new Date(job.createdAt).toLocaleDateString()}
           </div>
@@ -727,19 +715,19 @@ export default function JobsBoard() {
 
       {/* Filters and Sorting */}
       <div className="card" style={{ marginBottom: '1rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '1rem', alignItems: 'center' }}>
+        <div className="jobs-filter-bar">
           <input
             type="text"
             placeholder="Search jobs..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
+            className="jobs-search-input"
           />
           
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
+            className="jobs-select"
           >
             <option value="">All Status</option>
             <option value="active">Active</option>
@@ -749,28 +737,16 @@ export default function JobsBoard() {
           <select
             value={sortBy}
             onChange={(e) => handleSortChange(e.target.value)}
-            style={{ padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}
+            className="jobs-select"
           >
             <option value="createdAt">Created Date</option>
-            <option value="title">Job Title</option>
-            <option value="department">Department</option>
-            <option value="location">Location</option>
-            <option value="experienceLevel">Experience</option>
+            <option value="title">A–Z</option>
             <option value="salaryMin">Salary</option>
           </select>
 
           <button
             onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-            style={{
-              padding: '8px 12px',
-              border: '1px solid #ddd',
-              borderRadius: '4px',
-              background: 'white',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}
+            className="jobs-sort-button"
           >
             {sortOrder.toUpperCase()}
           </button>
