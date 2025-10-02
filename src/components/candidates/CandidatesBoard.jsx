@@ -110,9 +110,9 @@ export default function CandidatesBoard() {
       <div>
         <h2>Candidates</h2>
         <div className="card" style={{ color: 'red', textAlign: 'center', padding: '2rem' }}>
-          <p>❌ Error loading candidates: {error}</p>
+          <p>Error loading candidates: {error}</p>
           <button onClick={handleRetry} style={{ marginTop: '1rem' }}>
-            🔄 Retry
+            Retry
           </button>
         </div>
       </div>
@@ -166,7 +166,7 @@ export default function CandidatesBoard() {
       <div className="card">
         {loading ? (
           <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <div>🔄 Loading candidates...</div>
+            <div>Loading candidates...</div>
           </div>
         ) : candidates.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
