@@ -319,9 +319,9 @@ export default function JobsBoard() {
           <Link to="/jobs/create">+ New Job</Link>
         </div>
         <div className="card" style={{ color: 'red', textAlign: 'center', padding: '2rem' }}>
-          <p>❌ Error loading jobs: {error}</p>
+          <p>Error loading jobs: {error}</p>
           <button onClick={handleRetry} style={{ marginTop: '1rem' }}>
-            🔄 Retry
+            Retry
           </button>
         </div>
       </div>
@@ -375,7 +375,7 @@ export default function JobsBoard() {
                 }}
                 title="Edit job"
               >
-                ✏️
+                Edit
               </button>
               <button
                 onClick={(e) => {
@@ -393,7 +393,7 @@ export default function JobsBoard() {
                 }}
                 title={job.status === 'active' ? 'Archive job' : 'Activate job'}
               >
-                {job.status === 'active' ? '📦' : '🚀'}
+                {job.status === 'active' ? 'Archive' : 'Activate'}
               </button>
             </div>
           </div>
@@ -433,7 +433,7 @@ export default function JobsBoard() {
               marginBottom: '0.5rem'
             }}>
               <div style={{ fontSize: '0.7rem', color: '#856404', marginBottom: '0.25rem' }}>
-                🕒 Auto-archive in:
+                Auto-archive in:
               </div>
               <LiveTimer 
                 targetDate={job.autoArchiveDate}
@@ -493,10 +493,10 @@ export default function JobsBoard() {
       return (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', minHeight: '600px' }}>
           <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
-            🔄 Loading active jobs...
+            Loading active jobs...
           </div>
           <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
-            🔄 Loading archived jobs...
+            Loading archived jobs...
           </div>
         </div>
       )
@@ -526,7 +526,7 @@ export default function JobsBoard() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  🚀 Active Jobs ({activeJobs.length})
+                  Active Jobs ({activeJobs.length})
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {activeJobs.map((job, index) => (
@@ -588,7 +588,7 @@ export default function JobsBoard() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  📦 Archived Jobs ({archivedJobs.length})
+                  Archived Jobs ({archivedJobs.length})
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {archivedJobs.map((job, index) => (
@@ -637,7 +637,7 @@ export default function JobsBoard() {
     <div className="card">
       {loading ? (
         <div style={{ textAlign: 'center', padding: '2rem' }}>
-          <div>🔄 Loading jobs...</div>
+          <div>Loading jobs...</div>
         </div>
       ) : jobs.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
@@ -690,7 +690,7 @@ export default function JobsBoard() {
                 fontSize: '0.9rem'
               }}
             >
-              📋 Kanban
+              Kanban
             </button>
             <button
               onClick={() => setViewMode('list')}
@@ -703,7 +703,7 @@ export default function JobsBoard() {
                 fontSize: '0.9rem'
               }}
             >
-              📄 List
+              List
             </button>
           </div>
           
@@ -771,7 +771,7 @@ export default function JobsBoard() {
               gap: '0.5rem'
             }}
           >
-            {sortOrder === 'asc' ? '↑' : '↓'} {sortOrder.toUpperCase()}
+            {sortOrder.toUpperCase()}
           </button>
         </div>
       </div>
@@ -779,9 +779,9 @@ export default function JobsBoard() {
       {/* Main Content */}
       {error ? (
         <div className="card" style={{ color: 'red', textAlign: 'center', padding: '2rem' }}>
-          <p>❌ Error loading jobs: {error}</p>
+          <p>Error loading jobs: {error}</p>
           <button onClick={handleRetry} style={{ marginTop: '1rem' }}>
-            🔄 Retry
+            Retry
           </button>
         </div>
       ) : (
