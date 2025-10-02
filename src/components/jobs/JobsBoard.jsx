@@ -5,6 +5,7 @@ import CreateEditJobModal from './CreateEditJobModal'
 import LiveTimer from './LiveTimer'
 import Notification from '../common/Notification'
 import Pagination from '../common/Pagination'
+import './JobsBoard.css'
 
 export default function JobsBoard() {
   const [jobs, setJobs] = useState([])
@@ -173,7 +174,7 @@ export default function JobsBoard() {
     const job = jobs.find(j => j.id === jobId)
     
     if (!job) {
-      console.error('❌ Job not found:', jobId)
+      console.error('�� Job not found:', jobId)
       setNotification({
         message: 'Job not found',
         type: 'error'
