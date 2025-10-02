@@ -28,21 +28,21 @@ const SideNav = ({ userRole = 'admin' }) => {
       id: 'all-jobs',
       href: '/jobs',
       label: 'All Jobs',
-      icon: '💼',
+      icon: '',
       ariaLabel: 'All jobs section'
     },
     {
       id: 'candidates',
       href: '/candidates',
       label: 'Candidates',
-      icon: '👥',
+      icon: '',
       ariaLabel: 'Candidates section'
     },
     {
       id: 'assessments',
       href: '/assessments',
       label: 'Assessments',
-      icon: '📝',
+      icon: '',
       ariaLabel: 'Assessments section'
     },
     // {
@@ -59,14 +59,14 @@ const SideNav = ({ userRole = 'admin' }) => {
       id: 'all-jobs',
       href: '/jobs',
       label: 'All Jobs',
-      icon: '💼',
+      icon: '',
       ariaLabel: 'All available jobs'
     },
     {
       id: 'applied-jobs',
       href: '/jobs/applied',
       label: 'Applied Jobs',
-      icon: '📋',
+      icon: '',
       ariaLabel: 'Jobs you have applied to'
     }
   ]
@@ -81,7 +81,7 @@ const SideNav = ({ userRole = 'admin' }) => {
           <span className="side-nav-subtitle">HR Mini</span>
         </div>
         <div className="user-role-badge">
-          {userRole === 'candidate' ? '👤 Candidate' : '⚙️ Admin'}
+          {userRole === 'candidate' ? 'Candidate' : 'Admin'}
         </div>
       </div>
       

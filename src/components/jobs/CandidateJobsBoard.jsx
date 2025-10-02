@@ -204,9 +204,9 @@ export default function CandidateJobsBoard() {
             color: '#666', 
             fontSize: '0.9rem' 
           }}>
-            <span>🏢 {job.department}</span>
-            <span>📍 {job.location}</span>
-            <span>⭐ {job.experienceLevel}</span>
+            <span>Department: {job.department}</span>
+            <span>Location: {job.location}</span>
+            <span>Experience: {job.experienceLevel}</span>
           </div>
 
           {job.salaryMin && job.salaryMax && (
@@ -216,7 +216,7 @@ export default function CandidateJobsBoard() {
               fontWeight: 'bold', 
               marginBottom: '1rem' 
             }}>
-              💰 ${job.salaryMin.toLocaleString()}-${job.salaryMax.toLocaleString()}
+              Salary: ${job.salaryMin.toLocaleString()}-${job.salaryMax.toLocaleString()}
               {job.salaryType === 'hourly' ? '/hr' : '/yr'}
             </div>
           )}
@@ -266,7 +266,7 @@ export default function CandidateJobsBoard() {
                 alignItems: 'center',
                 gap: '0.5rem'
               }}>
-                ✓ Applied
+                Applied
               </div>
             ) : (
               <button
@@ -288,7 +288,7 @@ export default function CandidateJobsBoard() {
                 onMouseOver={(e) => e.target.style.background = '#0056b3'}
                 onMouseOut={(e) => e.target.style.background = '#007bff'}
               >
-                📝 Apply Now
+                Apply Now
               </button>
             )}
           </div>
@@ -304,9 +304,9 @@ export default function CandidateJobsBoard() {
           <h2>{isAppliedJobsView ? 'Applied Jobs' : 'All Jobs'}</h2>
         </div>
         <div className="card" style={{ color: 'red', textAlign: 'center', padding: '2rem' }}>
-          <p>❌ Error loading jobs: {error}</p>
+          <p>Error loading jobs: {error}</p>
           <button onClick={handleRetry} style={{ marginTop: '1rem' }}>
-            🔄 Retry
+            Retry
           </button>
         </div>
       </div>
@@ -343,12 +343,12 @@ export default function CandidateJobsBoard() {
       <div className="card">
         {loading ? (
           <div style={{ textAlign: 'center', padding: '3rem' }}>
-            <div style={{ fontSize: '1.2rem' }}>🔄 Loading jobs...</div>
+            <div style={{ fontSize: '1.2rem' }}>Loading jobs...</div>
           </div>
         ) : jobs.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '3rem', color: '#666' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
-              {isAppliedJobsView ? '📋' : '💼'}
+              {isAppliedJobsView ? 'Applied Jobs' : 'All Jobs'}
             </div>
             <h3>
               {isAppliedJobsView ? 'No applied jobs yet' : 'No jobs found'}

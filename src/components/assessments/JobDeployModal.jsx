@@ -53,7 +53,7 @@ export default function JobDeployModal({ isOpen, onClose, onConfirm, title = 'De
             />
           </div>
 
-          {error && <div className="error-text">❌ {error}</div>}
+          {error && <div className="error-text">{error}</div>}
 
           {loading ? (
             <div className="loading-text">Loading jobs...</div>

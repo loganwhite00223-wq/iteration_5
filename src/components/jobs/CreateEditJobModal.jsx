@@ -191,7 +191,7 @@ export default function CreateEditJobModal({ existing, onClose, onSaved, isOpen 
             marginBottom: '1rem',
             border: '1px solid #f5c6cb'
           }}>
-            ❌ {error}
+            {error}
           </div>
         )}
 
@@ -377,7 +377,7 @@ export default function CreateEditJobModal({ existing, onClose, onSaved, isOpen 
                 onChange={(e) => handleAutoArchiveToggle(e.target.checked)}
               />
               <label htmlFor="autoArchive" style={{ fontWeight: 'bold' }}>
-                🕒 Auto-Archive Job
+                Auto-Archive Job
               </label>
             </div>
 
@@ -410,7 +410,7 @@ export default function CreateEditJobModal({ existing, onClose, onSaved, isOpen 
                 </div>
                 {formData.autoArchiveDate && (
                   <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#666' }}>
-                    📅 Will be archived on: {new Date(formData.autoArchiveDate).toLocaleString()}
+                    Will be archived on: {new Date(formData.autoArchiveDate).toLocaleString()}
                   </div>
                 )}
               </div>

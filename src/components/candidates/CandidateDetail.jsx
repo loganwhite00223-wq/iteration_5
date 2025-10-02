@@ -247,10 +247,10 @@ export default function CandidateDetail() {
               Advance Stage →
             </button>
             <button className="btn" onClick={quickHire} disabled={saving}>
-              ✅ Mark Hired
+              Mark Hired
             </button>
             <button className="btn" onClick={quickReject} disabled={saving}>
-              ❌ Mark Rejected
+              Mark Rejected
             </button>
           </div>
         </section>

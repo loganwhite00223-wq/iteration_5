@@ -41,7 +41,7 @@ export default function ThemeSwitcher() {
         aria-expanded={open}
         title="Change theme"
       >
-        🎨 Theme
+        Theme
       </button>
       {open && (
         <div className="theme-popover" role="menu">

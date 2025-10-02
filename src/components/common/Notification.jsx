@@ -58,10 +58,10 @@ export default function Notification({ message, type = 'info', duration = 5000, 
 
   const getIcon = () => {
     const icons = {
-      success: '✅',
-      error: '❌',
-      warning: '⚠️',
-      info: 'ℹ️'
+      success: 'Success',
+      error: 'Error',
+      warning: 'Warning',
+      info: 'Info'
     }
     return icons[type]
   }
