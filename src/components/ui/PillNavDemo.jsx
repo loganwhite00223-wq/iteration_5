@@ -6,10 +6,10 @@ const PillNavDemo = () => {
   const [activeFilter, setActiveFilter] = useState('all')
 
   const tabItems = [
-    { id: 'overview', label: 'Overview', icon: '📊' },
-    { id: 'analytics', label: 'Analytics', icon: '📈' },
-    { id: 'reports', label: 'Reports', icon: '📋' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' }
+    { id: 'overview', label: 'Overview', icon: '' },
+    { id: 'analytics', label: 'Analytics', icon: '' },
+    { id: 'reports', label: 'Reports', icon: '' },
+    { id: 'settings', label: 'Settings', icon: '' }
   ]
 
   const filterItems = [
@@ -47,9 +47,9 @@ const PillNavDemo = () => {
         <h3>Compact Version</h3>
         <PillNav 
           items={[
-            { id: 'edit', label: 'Edit', icon: '✏️' },
-            { id: 'delete', label: 'Delete', icon: '🗑️' },
-            { id: 'share', label: 'Share', icon: '📤' }
+            { id: 'edit', label: 'Edit', icon: '' },
+            { id: 'delete', label: 'Delete', icon: '' },
+            { id: 'share', label: 'Share', icon: '' }
           ]}
           activeItem="edit"
           onItemClick={(item) => console.log('Clicked:', item.id)}
