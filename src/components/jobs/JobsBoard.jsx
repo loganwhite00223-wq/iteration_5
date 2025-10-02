@@ -500,21 +500,10 @@ export default function JobsBoard() {
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                style={{
-                  background: snapshot.isDraggingOver ? '#e8f5e8' : '#f8fff8',
-                  borderRadius: '8px',
-                  padding: '1rem',
-                  border: '2px dashed #28a745',
-                  minHeight: '500px'
-                }}
+                className="kanban-column active"
+                style={{ background: snapshot.isDraggingOver ? '#e8f5e8' : undefined }}
               >
-                <h3 style={{ 
-                  margin: '0 0 1rem 0', 
-                  color: '#28a745',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}>
+                <h3 className="kanban-title" style={{ color: '#28a745' }}>
                   Active Jobs ({activeJobs.length})
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -562,21 +551,10 @@ export default function JobsBoard() {
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                style={{
-                  background: snapshot.isDraggingOver ? '#f8e8e8' : '#fff8f8',
-                  borderRadius: '8px',
-                  padding: '1rem',
-                  border: '2px dashed #6c757d',
-                  minHeight: '500px'
-                }}
+                className="kanban-column archived"
+                style={{ background: snapshot.isDraggingOver ? '#f8e8e8' : undefined }}
               >
-                <h3 style={{ 
-                  margin: '0 0 1rem 0', 
-                  color: '#6c757d',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}>
+                <h3 className="kanban-title" style={{ color: '#6c757d' }}>
                   Archived Jobs ({archivedJobs.length})
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
