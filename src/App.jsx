@@ -33,7 +33,7 @@ function AppContent() {
         height: '100vh',
         fontSize: '1.2rem'
       }}>
-        🔄 Loading...
+        Loading...
       </div>
     )
   }
